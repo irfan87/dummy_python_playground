@@ -1,21 +1,31 @@
 ''' a simple employee class'''
 
 class Employee:
-    pass
+    def __init__(self, first_name, last_name, age, work_title, is_working):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.age = age
+        self.work_title = work_title
+        self.is_working = is_working
 
-emp_1 = Employee()
-emp_2 = Employee()
+    def fullname(self):
+        fullname = f'{self.first_name} {self.last_name}'
+        
+        return fullname.title()
 
-print(emp_1)
+    def user_email_address(self):
+        joined_name = self.first_name + '.' + self.last_name
+        name_no_whitespace = joined_name.replace(' ', '')
+        email = f'{name_no_whitespace}@company.com'
 
-emp_1.first_name = 'ahmad irfan'.title()
-emp_1.last_name = 'mohammad shukri'.title()
-emp_1.age = 33
-emp_1.work_title = 'Python Software Developer'
-emp_1.email_address = 'irfanshukri203@gmail.com'
-emp_1.is_working = True
+        return email
 
-if emp_1.is_working:
-    print(f'\nName: {emp_1.first_name} {emp_1.last_name}\nAge: {emp_1.age}\nWork Title: {emp_1.work_title}\nEmail Address: {emp_1.email_address}')
-else:
-    print(f'\nName: {emp_1.first_name} {emp_1.last_name}\nAge: {emp_1.age}\nWork Title: Not Working\nEmail Address: {emp_1.email_address}')
+    def user_info(self):
+        if self.is_working:
+            return f'\nName: {self.fullname()}\nAge: {self.age}\nWork Title: {self.work_title}\nEmail Address: {self.user_email_address()}'
+        else:
+            return f'\nName: {self.fullname()}\nAge: {self.age}\nWork Title: Not Working\nEmail Address: {self.user_email_address()}'
+
+emp_1 = Employee(first_name='ahmad irfan', last_name='mohammad shukri', age=33, work_title='Software Developer', is_working=True)
+print(emp_1.user_info())
+
